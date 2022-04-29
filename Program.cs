@@ -4,7 +4,7 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        var cons = new NodeConstructor(10, 10);
+        var cons = new NodeConstructor(10, 0);
         var deployer = new NodeDeployer(cons);
         deployer.Deploy();
 

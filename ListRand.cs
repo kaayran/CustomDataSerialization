@@ -22,10 +22,12 @@ public class ListRand
         using var writer = new BinaryWriter(s, Encoding.UTF8, false);
         for (var curr = Head; curr != null; curr = curr.Next)
         {
-            writer.Write(curr.Data);
-            writer.Write(nodes[curr.Rand]);
             // Add Data from current node 
             // And Id of Random Node that stored inside him
+            writer.Write(curr.Data);
+            writer.Write(curr.Rand != null ? nodes[curr.Rand] : -1);
+            // We need to check, is Rand ListNode presented in Object
+            // If not we set some kinda flag (-1) to check it on Deserializtion
         }
 
         Console.WriteLine("Serialization of ListNodes complete.");
@@ -78,7 +80,8 @@ public class ListRand
 
         for (var (curr, i) = (Head, 0); curr != null && i < Count; curr = curr.Next, i++)
         {
-            curr.Rand = nodes[rawNodes[i].randIndex];
+            curr.Rand = rawNodes[i].randIndex != -1 ? nodes[rawNodes[i].randIndex] : null;
+            // Check for (-1) flag in data, then pass null to field
         }
 
         Console.WriteLine("Second-Level Deserialization is finished.");
