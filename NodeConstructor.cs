@@ -39,8 +39,9 @@ public class NodeConstructor
                 Prev = null,
                 Next = null,
                 Rand = null,
-                Data = "DATA"
             };
+
+            node.Data = $"NodeData: {node.GetHashCode().ToString()}";
 
             Nodes.Add(node);
         }

@@ -12,7 +12,7 @@ public class ListRand
     {
         // Create Dictionary of ListNodes & Unique Id's (for Rand refs in future)
         var nodes = new Dictionary<ListNode, int>();
-        // For walk-through in Nodes
+        // Walk-through in Nodes
         for (var (curr, index) = (Head, 0); curr != null; curr = curr.Next, index++)
         {
             nodes.Add(curr, index);
@@ -53,16 +53,25 @@ public class ListRand
         Head = new ListNode();
         for (var (curr, i) = (Head, 0); curr != null && i < Count; curr = curr.Next, i++)
         {
-            curr.Next = new ListNode();
             curr.Data = rawNodes[i].data;
-            // Check for Tail ListNode to assign Prev
-            if (i < Count - 1) 
-                curr.Next.Prev = curr;
+            // Check for Tail ListNode to assign Prev with Next
+            if (i < Count - 1)
+            {
+                curr.Next = new ListNode
+                {
+                    Prev = curr
+                };
+            }
             else // Its last ListNode of sequence
+            {
                 Tail = curr;
-            
+            }
+
             // For ListNode.Rand we need to set default value (null)
-            // Then we iterate through it and assign 
+            // Then we iterate through it and assign
+            
         }
+
+        Console.WriteLine("First-Level Deserialization is finished.");
     }
 }
