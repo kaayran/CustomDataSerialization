@@ -12,10 +12,10 @@ public class NodeConstructor
         init => _size = value > 0 ? value : 10;
     }
 
-    private int Randoms
+    public int Randoms
     {
         get => _randoms;
-        init => _randoms = 0 <= value && value <= _size ? value : 0;
+        private init => _randoms = 0 <= value && value <= _size ? value : 0;
     }
 
     public List<ListNode> Nodes => _nodes;
