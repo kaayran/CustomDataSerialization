@@ -4,6 +4,14 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        var cons = new NodeConstructor(10, 3);
+        
+        var inspector = new NodeInspector(cons);
+        inspector.SoftInspect();
+
+        var deployer = new NodeDeployer(cons);
+        deployer.Deploy();
+        
+        inspector.HardInspect();
     }
 }
