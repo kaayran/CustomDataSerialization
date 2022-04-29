@@ -7,7 +7,7 @@ public class NodeConstructor
     public ListNode Head { get; private set; } = null;
     public ListNode Tail { get; private set; } = null;
 
-    private int Size
+    public int Size
     {
         get => _size;
         init => _size = value > 0 ? value : 10;
