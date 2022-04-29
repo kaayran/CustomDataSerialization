@@ -4,7 +4,7 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        var cons = new NodeConstructor(10, 0);
+        var cons = new NodeConstructor(10, 1);
         var deployer = new NodeDeployer(cons);
         deployer.Deploy();
 
@@ -18,7 +18,7 @@ public static class Program
             Count = cons.Size
         };
 
-        const string path = @"A:\Repositories\C#\CustomDataSerialization\Data\data.txt";
+        const string path = @"..\..\..\Data\data.txt";
         var fsWrite = new FileStream(path, FileMode.Create);
         listRand.Serialize(fsWrite);
         NodeInspector.HardInspectByNodesForward(listRand.Head);
