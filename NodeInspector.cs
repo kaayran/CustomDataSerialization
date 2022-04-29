@@ -46,7 +46,7 @@ public class NodeInspector
         Console.WriteLine("Hard inspection finished.");
     }
 
-    private static void InspectByNodesForward(ListNode head)
+    public static void InspectByNodesForward(ListNode head)
     {
         Console.WriteLine("Going forward");
         var curr = head;
@@ -58,7 +58,7 @@ public class NodeInspector
         }
     }
 
-    private static void InspectByNodesBackward(ListNode tail)
+    public static void InspectByNodesBackward(ListNode tail)
     {
         Console.WriteLine("Going backward");
         var curr = tail;
