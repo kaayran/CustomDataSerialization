@@ -13,12 +13,8 @@ public class NodeDeployer
     {
         randIndex = -1;
         var rand = new Random();
-        var isGood = Convert.ToBoolean(rand.Next(0, 2));
-
-        if (!isGood) return false;
 
         randIndex = rand.Next(0, lessThen);
-        Console.WriteLine($"Random index: {randIndex}");
         return true;
     }
 
