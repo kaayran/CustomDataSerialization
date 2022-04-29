@@ -13,5 +13,20 @@ public static class Program
         deployer.Deploy();
         
         inspector.HardInspect();
+
+        Console.WriteLine($"Head: #{cons.Head.GetHashCode()}, Tail: #{cons.Tail.GetHashCode()}");
+        
+        InspectByNodes(cons.Head);
+    }
+
+    private static void InspectByNodes(ListNode head)
+    {
+        var curr = head;
+        
+        while (curr != null)
+        {
+            Console.WriteLine($"{curr.GetHashCode()}");
+            curr = curr.Next;
+        }
     }
 }
