@@ -4,6 +4,8 @@ public class NodeConstructor
 {
     private readonly int _size;
     private readonly int _randoms;
+    public ListNode Head { get; private set; } = null;
+    public ListNode Tail { get; private set; } = null;
 
     private int Size
     {
@@ -42,6 +44,9 @@ public class NodeConstructor
 
             Nodes.Add(node);
         }
+
+        Head = Nodes[0];
+        Tail = Nodes[^1];
 
         Console.WriteLine($"Nodes constructed. Size: {_size}, Rands: {_randoms}");
     }
