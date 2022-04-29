@@ -24,7 +24,9 @@ public class NodeConstructor
     {
         Size = size;
         Randoms = randoms;
-        _nodes = new List<ListNode>();
+        
+        _nodes = new List<ListNode>(_size);
+        CreateNodes();
     }
 
     private List<ListNode> CreateNodes()
@@ -41,6 +43,8 @@ public class NodeConstructor
 
             _nodes.Add(node);
         }
+
+        Console.WriteLine($"Nodes constructed. Size: {_size}, Rands: {_randoms}");
 
         return _nodes;
     }
