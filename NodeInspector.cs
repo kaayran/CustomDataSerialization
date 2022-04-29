@@ -27,9 +27,9 @@ public class NodeInspector
 
         foreach (var node in nodes)
         {
-            var nodePrev = node.Prev.GetHashCode();
-            var nodeNext = node.Next.GetHashCode();
-            var nodeRand = node.Prev.GetHashCode();
+            var nodePrev = node.Prev?.GetHashCode() ?? 0;
+            var nodeNext = node.Next?.GetHashCode() ?? 0;
+            var nodeRand = node.Rand?.GetHashCode() ?? 0;
             var nodeData = node.Data;
 
             Console.WriteLine($"Node: #{node.GetHashCode()}, " +
