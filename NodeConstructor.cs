@@ -10,7 +10,7 @@ public class NodeConstructor
     public int Size
     {
         get => _size;
-        init => _size = value > 0 ? value : 10;
+        private init => _size = value > 0 ? value : 10;
     }
 
     public int Randoms

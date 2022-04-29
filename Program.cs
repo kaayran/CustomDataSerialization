@@ -18,11 +18,13 @@ public static class Program
             Count = cons.Size
         };
 
+        // Serialization of deployed nodes
         const string path = @"..\..\..\Data\data.txt";
         var fsWrite = new FileStream(path, FileMode.Create);
         listRand.Serialize(fsWrite);
         NodeInspector.HardInspectByNodesForward(listRand.Head);
 
+        // Deserialization of deployed nodes
         var fsRead = new FileStream(path, FileMode.Open);
         listRand.Deserialize(fsRead);
         NodeInspector.HardInspectByNodesForward(listRand.Head);

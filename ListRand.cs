@@ -27,7 +27,7 @@ public class ListRand
             writer.Write(curr.Data);
             writer.Write(curr.Rand != null ? nodes[curr.Rand] : -1);
             // We need to check, is Rand ListNode presented in Object
-            // If not we set some kinda flag (-1) to check it on Deserializtion
+            // If not we set some kinda flag (-1) to check it on Deserialization
         }
 
         Console.WriteLine("Serialization of ListNodes complete.");
