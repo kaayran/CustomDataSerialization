@@ -4,6 +4,10 @@ public class NodeInspector
 {
     private readonly NodeConstructor _nodeConstructor;
 
+    public NodeInspector()
+    {
+    }
+
     public NodeInspector(NodeConstructor nodeConstructor)
     {
         _nodeConstructor = nodeConstructor;
@@ -41,7 +45,7 @@ public class NodeInspector
 
         Console.WriteLine("Hard inspection finished.");
     }
-    
+
     private static void InspectByNodesForward(ListNode head)
     {
         Console.WriteLine("Going forward");
