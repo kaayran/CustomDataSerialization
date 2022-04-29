@@ -4,43 +4,27 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        var cons = new NodeConstructor(10, 3);
-
-        var inspector = new NodeInspector(cons);
-        inspector.SoftInspect();
-
+        var cons = new NodeConstructor(10, 10);
         var deployer = new NodeDeployer(cons);
         deployer.Deploy();
 
-        inspector.HardInspect();
-
         Console.WriteLine($"Head: #{cons.Head.GetHashCode()}, Tail: #{cons.Tail.GetHashCode()}");
 
-        InspectByNodesForward(cons.Head);
-        InspectByNodesBackward(cons.Tail);
-    }
-
-    private static void InspectByNodesForward(ListNode head)
-    {
-        Console.WriteLine("Going forward");
-        var curr = head;
-
-        while (curr != null)
+        // Real workflow from here
+        var listRand = new ListRand
         {
-            Console.WriteLine($"{curr.GetHashCode()}");
-            curr = curr.Next;
-        }
-    }
+            Head = cons.Head,
+            Tail = cons.Tail,
+            Count = cons.Size
+        };
 
-    private static void InspectByNodesBackward(ListNode tail)
-    {
-        Console.WriteLine("Going backward");
-        var curr = tail;
+        const string path = @"A:\Repositories\C#\CustomDataSerialization\Data\data.txt";
+        var fsWrite = new FileStream(path, FileMode.Create);
+        listRand.Serialize(fsWrite);
+        NodeInspector.HardInspectByNodesForward(listRand.Head);
 
-        while (curr != null)
-        {
-            Console.WriteLine($"{curr.GetHashCode()}");
-            curr = curr.Prev;
-        }
+        var fsRead = new FileStream(path, FileMode.Open);
+        listRand.Deserialize(fsRead);
+        NodeInspector.HardInspectByNodesForward(listRand.Head);
     }
 }

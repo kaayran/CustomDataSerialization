@@ -35,6 +35,7 @@ public class ListRand
     {
         // Re-create Dictionary to provide Data & ListNodes (Random)
         // To know, how to operate with indexes - we need a counter
+        // Also, we need a list of Nodes to fast use of indexes
         var rawNodes = new Dictionary<int, (string data, int randIndex)>();
         var count = 0;
         using var reader = new BinaryReader(s, Encoding.UTF8, false);
@@ -49,10 +50,12 @@ public class ListRand
 
         // Save local counter to ListRand.Count
         Count = count;
+        var nodes = new List<ListNode>(Count);
 
         Head = new ListNode();
         for (var (curr, i) = (Head, 0); curr != null && i < Count; curr = curr.Next, i++)
         {
+            nodes.Add(curr);
             curr.Data = rawNodes[i].data;
             // Check for Tail ListNode to assign Prev with Next
             if (i < Count - 1)
@@ -69,9 +72,18 @@ public class ListRand
 
             // For ListNode.Rand we need to set default value (null)
             // Then we iterate through it and assign
-            
         }
 
         Console.WriteLine("First-Level Deserialization is finished.");
+
+        for (var (curr, i) = (Head, 0); curr != null && i < Count; curr = curr.Next, i++)
+        {
+            if (rawNodes.ContainsKey(i))
+            {
+                curr.Rand = nodes[rawNodes[i].randIndex];
+            }
+        }
+
+        Console.WriteLine("Second-Level Deserialization is finished.");
     }
 }
