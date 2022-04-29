@@ -4,7 +4,6 @@ public class NodeConstructor
 {
     private readonly int _size;
     private readonly int _randoms;
-    private List<ListNode> _nodes;
 
     private int Size
     {
@@ -18,18 +17,18 @@ public class NodeConstructor
         private init => _randoms = 0 <= value && value <= _size ? value : 0;
     }
 
-    public List<ListNode> Nodes => _nodes;
+    public List<ListNode> Nodes { get; }
 
     public NodeConstructor(int size, int randoms)
     {
         Size = size;
         Randoms = randoms;
-        
-        _nodes = new List<ListNode>(_size);
+
+        Nodes = new List<ListNode>(_size);
         CreateNodes();
     }
 
-    private List<ListNode> CreateNodes()
+    private void CreateNodes()
     {
         for (var i = 0; i < _size; i++)
         {
@@ -41,11 +40,9 @@ public class NodeConstructor
                 Data = "DATA"
             };
 
-            _nodes.Add(node);
+            Nodes.Add(node);
         }
 
         Console.WriteLine($"Nodes constructed. Size: {_size}, Rands: {_randoms}");
-
-        return _nodes;
     }
 }
