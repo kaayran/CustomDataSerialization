@@ -19,7 +19,7 @@ public static class Program
         };
 
         // Serialization of deployed nodes
-        const string path = @"..\..\..\Data\data.txt";
+        const string path = @"..\..\..\Data\data.dat";
         var fsWrite = new FileStream(path, FileMode.Create);
         listRand.Serialize(fsWrite);
         NodeInspector.HardInspectByNodesForward(listRand.Head);
