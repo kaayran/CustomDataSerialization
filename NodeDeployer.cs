@@ -9,13 +9,17 @@ public class NodeDeployer
         _nodeConstructor = nodeConstructor;
     }
 
-    private int RandomIndex(int lessThen)
+    private bool IsRandomNode(int lessThen, int currIndex, out int randIndex)
     {
+        randIndex = -1;
         var rand = new Random();
-        var randValue = rand.Next(0, lessThen);
-        Console.WriteLine($"RandomIndex: {randValue}");
+        var isGood = Convert.ToBoolean(rand.Next(0, 2));
 
-        return randValue;
+        if (!isGood) return false;
+        
+        randIndex = rand.Next(0, lessThen);
+        Console.WriteLine($"Random index: {randIndex}");
+        return true;
     }
 
     public void Deploy()
@@ -23,15 +27,18 @@ public class NodeDeployer
         var nodes = _nodeConstructor.Nodes;
         var rands = _nodeConstructor.Randoms;
 
-        for (var i = 0; i < nodes.Count - 1; i++)
+        for (var i = 0; i < nodes.Count; i++)
         {
             var node = nodes[i];
-            node.Next = nodes[i + 1];
-            node.Prev = nodes[i - 1];
 
-            if (rands <= 0) continue;
-            node.Rand = nodes[RandomIndex(nodes.Count)];
-            rands--;
+            if (i > 0) node.Prev = nodes[i - 1];
+            if (i != nodes.Count - 1) node.Next = nodes[i + 1];
+
+            if (IsRandomNode(nodes.Count, i, out var randIndex) && rands > 0)
+            {
+                node.Rand = nodes[randIndex];
+                rands--;
+            }
         }
 
         Console.WriteLine("Nodes deployed.");
