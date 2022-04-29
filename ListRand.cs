@@ -78,10 +78,7 @@ public class ListRand
 
         for (var (curr, i) = (Head, 0); curr != null && i < Count; curr = curr.Next, i++)
         {
-            if (rawNodes.ContainsKey(i))
-            {
-                curr.Rand = nodes[rawNodes[i].randIndex];
-            }
+            curr.Rand = nodes[rawNodes[i].randIndex];
         }
 
         Console.WriteLine("Second-Level Deserialization is finished.");
