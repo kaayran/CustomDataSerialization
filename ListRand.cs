@@ -76,14 +76,12 @@ public class ListRand
             // Then we iterate through it and assign
         }
 
-        Console.WriteLine("First-Level Deserialization is finished.");
-
         for (var (curr, i) = (Head, 0); curr != null && i < Count; curr = curr.Next, i++)
         {
             curr.Rand = rawNodes[i].randIndex != -1 ? nodes[rawNodes[i].randIndex] : null;
             // Check for (-1) flag in data, then pass null to field
         }
 
-        Console.WriteLine("Second-Level Deserialization is finished.");
+        Console.WriteLine("Deserialization is finished.");
     }
 }

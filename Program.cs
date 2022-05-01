@@ -4,13 +4,12 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        var cons = new NodeConstructor(10, 1);
+        var cons = new NodeConstructor(10, 10);
         var deployer = new NodeDeployer(cons);
         deployer.Deploy();
 
-        Console.WriteLine($"Head: #{cons.Head.GetHashCode()}, Tail: #{cons.Tail.GetHashCode()}");
+        Console.WriteLine($"Head: #{cons.Head.GetHashCode():00000000}, Tail: #{cons.Tail.GetHashCode():00000000}");
 
-        // Real workflow from here
         var listRand = new ListRand
         {
             Head = cons.Head,

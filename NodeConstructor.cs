@@ -4,8 +4,8 @@ public class NodeConstructor
 {
     private readonly int _size;
     private readonly int _randoms;
-    public ListNode Head { get; private set; } = null;
-    public ListNode Tail { get; private set; } = null;
+    public ListNode Head { get; private set; }
+    public ListNode Tail { get; private set; }
 
     public int Size
     {
@@ -41,7 +41,7 @@ public class NodeConstructor
                 Rand = null,
             };
 
-            node.Data = $"NodeData: {node.GetHashCode().ToString()}";
+            node.Data = $"{node.GetHashCode().ToString()}";
 
             Nodes.Add(node);
         }
